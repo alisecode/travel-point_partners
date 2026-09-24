@@ -229,16 +229,6 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 .how-grid b{display:block;color:var(--text);font-weight:600;margin-bottom:3px}
 @media (max-width:760px){.how-grid{grid-template-columns:1fr}}
 
-/* Lessons */
-.lessons{margin-top:56px;border-top:1px solid var(--line)}
-.lesson{display:grid;grid-template-columns:240px 1fr 1fr;gap:28px;padding:30px 0;border-bottom:1px solid var(--line)}
-@media (max-width:820px){.lesson{grid-template-columns:1fr;gap:10px}}
-.lesson h3{font-size:19px}
-.lesson .who{font-size:14px;color:var(--muted);margin-top:4px}
-.lesson .what{font-size:15.5px;color:var(--muted)}
-.lesson .us{font-size:15.5px;font-weight:500}
-.lesson .us::before{content:"Для нас: ";color:var(--accent);font-weight:600}
-
 /* Roadmap */
 .road{list-style:none;padding:0;margin:56px 0 0;counter-reset:r}
 .road li{display:grid;grid-template-columns:64px 170px 1fr;gap:18px;padding:22px 0;border-top:1px solid var(--line);counter-increment:r}
@@ -266,7 +256,6 @@ footer a{word-break:break-all}
       <a href="#points">Бали</a>
       <a href="#retreat">Retreat</a>
       <a href="#calc">Економіка</a>
-      <a href="#lessons">Інші ніші</a>
     </div>
   </div>
 </nav>
@@ -404,8 +393,8 @@ footer a{word-break:break-all}
     </div>
 
     <div class="rules3">
-      <div><h3>Зрозуміла ставка замість «якоїсь кількості балів»</h3><p class="muted">RateHawk не називає відсоток: кількість балів залежить від ночей, харчування й категорії номера, а на частину тарифів бали не нараховуються зовсім. Агенти самі кажуть, що не розуміють принципу розрахунку. <span class="hl">Можливо, варто зробити інакше: фіксована ставка на кожен тариф, включно з люксом і трансферами, щоб агент одразу бачив, скільки отримає.</span></p></div>
-      <div><h3>Ставка відома одразу, а не в кінці кварталу</h3><p class="muted">Unit рахує кешбек від кожного оплаченого бронювання, але рівень визначає обсяг за квартал, а виплата приходить лише після його завершення. <span class="hl">Пропоную фіксувати ставку в момент бронювання й відкривати бали через 24 години після виїзду гостя.</span></p></div>
+      <div><h3>Зрозуміла ставка</h3><p class="muted">RateHawk не називає відсоток: кількість балів залежить від ночей, харчування й категорії номера, а на частину тарифів бали не нараховуються зовсім. Агенти самі кажуть, що не розуміють принципу розрахунку. <span class="hl">Можливо, варто зробити інакше: фіксована ставка на кожен тариф, включно з люксом і трансферами, щоб агент одразу бачив, скільки отримає.</span></p></div>
+      <div><h3>Ставка відома одразу</h3><p class="muted">Unit рахує кешбек від кожного оплаченого бронювання, але рівень визначає обсяг за квартал, а виплата приходить лише після його завершення. <span class="hl">Пропоную фіксувати ставку в момент бронювання й відкривати бали через 24 години після виїзду гостя.</span></p></div>
       <div><h3>Нижче 1% не помічають</h3><p class="muted">Корпоративні картки в B2B дають 1–1,5% на все. Середні рівні нижче цього агент, імовірно, сприйме як дрібницю, тому <span class="hl">пропоную починати Silver з 1%.</span></p></div>
     </div>
   </div>
@@ -440,6 +429,7 @@ footer a{word-break:break-all}
           <ul>
             <li><span class="plus">Все зі Standard, а також</span></li>
             <li class="new">Пріоритетна черга</li>
+            <li>Перевірка протягом 24 годин після бронювання</li>
             <li>Ранній доступ до нових функцій</li>          </ul>
         </div>
       </article>
@@ -450,7 +440,6 @@ footer a{word-break:break-all}
           <p class="thr">Від €10 000 на місяць</p>
           <ul>
             <li><span class="plus">Все із Silver, а також</span></li>
-            <li>Перевірка протягом 24 годин після бронювання</li>
             <li class="new">VIP-підготовка заїзду: апгрейд за наявності</li>
             <li class="new">Спеціальні умови кредитної лінії</li>
             <li class="new">Шанс на місце в Retreat за найбільший приріст</li>
@@ -465,7 +454,6 @@ footer a{word-break:break-all}
           <ul>
             <li><span class="plus">Все з Gold, а також</span></li>
             <li class="new">Senior-менеджер, відповідь на будь-який запит протягом 2 годин</li>
-            <li>Чат у WhatsApp та Telegram 24/7</li>
             <li>Повторна перевірка перед заїздом</li>
             <li class="new">Індивідуальні рішення на платформі під робочі процеси агенції</li>
             <li class="new">Щорічний Platinum Retreat за наш рахунок</li>
@@ -552,51 +540,14 @@ footer a{word-break:break-all}
   </div>
 </section>
 
-<section id="lessons">
-  <div class="wrap">
-    <div class="narrow center">
-      <h2 class="h-sec">Як це роблять<br>в інших нішах.</h2>
-      <p class="lead">Авіакомпанії, фінтех, люкс-готелі й SaaS давно продають партнерам не знижку, а статус і доступ.</p>
-    </div>
-    <div class="lessons">
-      <div class="lesson">
-        <div><h3>Авіа для бізнесу</h3><p class="who">Qatar Airways Beyond Business</p></div>
-        <p class="what">Компанія накопичує Qrewards за всі поїздки співробітників. Три рівні за обсягом витрат (Elevate, Accelerate, Ascent): старші відкривають доступ до лаунжів і підвищення статусу. Співробітники паралельно заробляють особисті Avios у Privilege Club.</p>
-        <p class="us">Можна показувати рівні через те, що вони відкривають, а не лише через відсоток. Особисті бали для співробітника, який бронює, у нашій програмі вже закладені.</p>
-      </div>
-      <div class="lesson">
-        <div><h3>Корпоративні картки</h3><p class="who">Mercury, Rho</p></div>
-        <p class="what">Mercury дає 1,5% кешбеку на всі витрати, Rho — від 1% до 2% залежно від умов оплати й тарифу. Кешбек близько 1–1,5% на все став нормою для B2B-карток.</p>
-        <p class="us">Пропоную не опускати середні рівні нижче 1%, інакше агент порівнюватиме нас зі своєю карткою й може не побачити різниці.</p>
-      </div>
-      <div class="lesson">
-        <div><h3>Люкс-готелі</h3><p class="who">Four Seasons Preferred Partner</p></div>
-        <p class="what">Програма лише за запрошенням: статус отримують агенції зі стабільним обсягом бронювань Four Seasons. Бонуси отримує гість: сніданок на двох, пріоритетний апгрейд за наявності, кредит на послуги готелю.</p>
-        <p class="us">Бали, витрачені на клієнта, можуть підсилювати статус агента в очах клієнта. Можна також зробити Platinum доступним за запрошенням, а не лише за обсягом.</p>
-      </div>
-      <div class="lesson">
-        <div><h3>SaaS-партнерства</h3><p class="who">HubSpot Solutions Partners</p></div>
-        <p class="what">П’ять рівнів, верхній Elite — лише за запрошенням. Для Diamond і Elite обов’язкове утримання клієнтів: щонайменше 75% і 80% виручки (GRR) за рік. З Platinum партнери можуть подаватися на спільне фінансування маркетингу (MDF).</p>
-        <p class="us">Можна враховувати не лише обсяг, а й стабільність, і запропонувати Platinum спільний маркетинг: добірки, контент, спільні події.</p>
-      </div>
-      <div class="lesson">
-        <div><h3>B2B-платформи в тревелі</h3><p class="who">Expedia TAAP Rewards</p></div>
-        <p class="what">Один бал за кожен долар бронювання. Бали прив’язані до профілю конкретного агента, а не лише агенції, спершу «очікуються» і стають доступними після проживання, обмінюються на подарункові картки. У США програма зібрала понад 38 000 реєстрацій (станом на травень 2024).</p>
-        <p class="us">Підтверджує наш підхід: особисті бали отримує саме та людина, яка натискає «забронювати».</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section class="alt">
+<section>
   <div class="wrap">
     <div class="narrow center">
       <h2 class="h-sec">Пропоновані кроки.</h2>
     </div>
     <ol class="road">
       <li><span class="when">Зараз</span><div><h3>Затвердити ставки й рівні</h3><p>Таблиця рівнів, правила балів, формат Retreat.</p></div></li>
-      <li><span class="when">Тиждень 1–2</span><div><h3>Порахувати базу й економіку</h3><p>GMV кожного агента за липень–вересень, маржа по сегментах, вартість верифікації й менеджерів.</p></div></li>
+      <li><span class="when">Тиждень 1–2</span><div><h3>Узгодити й порахувати економіку</h3><p>Узгодити ставки, пороги й привілеї та перевірити їх на реальних даних, щоб програма була вигідною насамперед для нас: обсяги агентів за липень–вересень, маржа по сегментах, вартість перевірок і менеджерів.</p></div></li>
       <li><span class="when">Тиждень 3–5</span><div><h3>Мінімальний продукт</h3><p>Близько трьох тижнів на дизайн і розробку: баланси «очікуються / доступні», «+X балів» у чекауті, оплата балами. Перший місяць нарахування можна робити вручну.</p></div></li>
       <li><span class="when">Тиждень 6</span><div><h3>Запуск</h3><p>Спершу особиста розмова з кожним із топ-5, потім анонс усій базі. Retreat пропоную анонсувати разом з програмою.</p></div></li>
       <li><span class="when">Тиждень 8–10</span><div><h3>Перший зріз</h3><p>Рух по драбині, повернення нових, частка витрачених балів, частка балів, витрачених на клієнтів.</p></div></li>
@@ -613,13 +564,8 @@ footer a{word-break:break-all}
       <li><a href="https://www.travelpulse.com/news/technology/ratehawk-enhances-loyalty-program-with-faster-rewards-and-greater-flexibility">TravelPulse — оновлення програми RateHawk, 2025</a></li>
       <li><a href="https://book.unit.travel/faq?detailId=5030">Unit.Travel — Unit Wallet і рівні кешбеку</a></li>
       <li><a href="https://book.unit.travel/index.ua.html">Unit.Travel — B2B-платформа</a></li>
-      <li><a href="https://www.qatarairways.com/en/corporate-travel/beyond-business/bb-value-read-more.html">Qatar Airways — Beyond Business Value</a></li>
       <li><a href="https://mercury.com/io">Mercury — IO card</a></li>
       <li><a href="https://www.rho.co/corporate-cards">Rho — корпоративні картки</a></li>
-      <li><a href="https://www.foratravel.com/partners/four-seasons/neil-mcpherson">Fora — Four Seasons Preferred Partner</a></li>
-      <li><a href="https://www.hubspot.com/solutions-partners-tiers-and-benefits-2026">HubSpot — рівні партнерів 2026</a></li>
-      <li><a href="https://www.expedia.com/newsroom/expedia-taap-rewards-program-expands-to-canada-and-mexico/">Expedia — TAAP Rewards, травень 2024</a></li>
-      <li><a href="https://www.hubspot.com/partners/how-tiers-work">HubSpot — як працюють рівні партнерів</a></li>
     </ol>
   </div>
 </footer>
