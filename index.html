@@ -98,19 +98,37 @@ p{margin:0}
 @media (prefers-reduced-motion:reduce){.mcard{transition:none}}
 
 /* Competitor table */
-.tbl-wrap{overflow-x:auto;margin-top:56px;border-radius:18px;background:var(--card);border:1px solid var(--line)}
-table{border-collapse:collapse;width:100%;min-width:720px;font-size:15px}
-th,td{padding:16px 18px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
-tr:last-child td{border-bottom:0}
-thead th{font-size:14px;color:var(--muted);font-weight:600}
-thead th.us{color:var(--text)}
-td.us{background:var(--accent-soft)}
-th[scope=row]{font-weight:600;width:22%}
-tr.flag td,tr.flag th{background:rgba(255,159,10,.10)}
-.pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;background:var(--line);color:var(--text);margin-left:6px;vertical-align:1px}
-.pill.bad{background:rgba(255,69,58,.14);color:#d70015}
-.pill.ok{background:rgba(48,209,88,.16);color:var(--good)}
-.pill.tbd{background:var(--accent-soft);color:var(--accent);margin-left:0}
+.cmp{margin-top:56px}
+.cmp-head,.cmp-quick,.cmp-row{display:grid;grid-template-columns:repeat(3,1fr);column-gap:32px}
+.cmp-head{position:sticky;top:calc(env(safe-area-inset-top,0px) + 48px);z-index:5;padding:12px 0;background:var(--bg-alt)}
+.cmp-head .col{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px}
+.cmp-head .name{font-size:17px;font-weight:600;letter-spacing:-.01em}
+.cmp-head .sub{font-size:12px;color:var(--muted)}
+.cmp-head .us .sub{color:var(--accent)}
+.cmp-sec{margin-top:64px}
+.cmp-sec>h3{font-size:clamp(24px,3vw,32px);font-weight:600;letter-spacing:-.015em;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.cmp-quick{row-gap:48px;padding-top:44px;text-align:center}
+.q{display:flex;flex-direction:column;align-items:center}
+.q .eb{font-size:14px;font-weight:600}
+.q .big{font-size:clamp(30px,4vw,48px);font-weight:700;letter-spacing:-.03em;line-height:1.1}
+.q .cap{font-size:14px;font-weight:600;margin-top:4px;max-width:220px}
+.q.us .big{color:var(--accent)}
+.dash{color:var(--muted)}
+.cmp-row{padding-top:28px}
+.cmp-row .k{display:block;font-size:14px;font-weight:600;margin-bottom:4px}
+.cmp-row p{font-size:15px;line-height:1.47}
+.pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;background:var(--line);color:var(--text);vertical-align:1px}
+.pill.tbd{background:var(--accent-soft);color:var(--accent)}
+.tip{position:relative;cursor:help}
+.tip::after{content:attr(data-tip);position:absolute;left:50%;bottom:calc(100% + 8px);transform:translate(-50%,4px);
+  white-space:nowrap;background:var(--text);color:var(--bg);font-size:12px;font-weight:500;letter-spacing:0;line-height:1.3;
+  padding:6px 10px;border-radius:8px;opacity:0;pointer-events:none;transition:opacity .15s,transform .15s;z-index:6}
+.tip:hover::after,.tip:focus::after{opacity:1;transform:translate(-50%,0)}
+@media (max-width:700px){
+  .cmp-scroll{overflow-x:auto;margin:0 -22px;padding:0 22px}
+  .cmp{min-width:640px}
+  .cmp-head{position:static}
+}
 .callout{margin-top:28px;display:flex;gap:18px;align-items:flex-start;padding:24px 26px;border-radius:18px;background:var(--card);border:1px solid var(--line)}
 .callout .dot{flex:none;width:10px;height:10px;border-radius:50%;background:var(--warn);margin-top:9px}
 .callout strong{display:block;font-size:19px;margin-bottom:4px}
@@ -265,20 +283,80 @@ footer a{word-break:break-all}
   <div class="wrap">
     <div class="narrow center">
       <h2 class="h-sec">Що вже дають конкуренти.</h2>
-      <p class="lead">Перевірку бронювань і персонального менеджера ринок вважає нормою. Те, що в чорновику стоїть на верхніх рівнях, RateHawk дає кожному.</p>
+      <p class="lead">Як RateHawk і Unit.Travel винагороджують агентів: бали, рівні, виплати й сервіс — поруч із нашим чорновиком.</p>
     </div>
-    <div class="tbl-wrap">
-      <table>
-        <thead>
-          <tr><th></th><th>RateHawk</th><th>Unit.Travel</th><th class="us">Travel Point, чорновик</th></tr>
-        </thead>
-        <tbody>
-          <tr><th scope="row">Бали / кешбек</th><td>Фіксована кількість балів за бронювання, без відсотка: залежить від ночей, харчування й категорії номера. Не на всіх тарифах</td><td>0,2–1,3% від нетто кожного оплаченого бронювання, ставка залежить від обсягу за квартал</td><td class="us">Ще визначаємо <span class="pill tbd">?</span></td></tr>
-          <tr><th scope="row">Рівні</th><td>Немає</td><td>5 рівнів за обсягом продажів за квартал, пороги персональні для кожного агента</td><td class="us">4 рівні</td></tr>
-          <tr class="flag"><th scope="row">Персональний менеджер</th><td><b>Кожному клієнту за замовчуванням</b> + менеджер онбордингу, може зустрітись особисто</td><td>Підтримка 24/7 у месенджерах і телефоном</td><td class="us">Лише Platinum <span class="pill bad">нижче ринку</span></td></tr>
-          <tr><th scope="row">Перевірка бронювань</th><td>Кожне бронювання до заїзду</td><td>Кожне бронювання до заїзду: команда підтримки звіряє деталі з постачальником або готелем</td><td class="us">Кожне бронювання до заїзду: команда підтримки звіряє деталі з постачальником або готелем</td></tr>
-          <tr><th scope="row">Коли бали доступні</th><td>Через 2 дні після виїзду або після дедлайну оплати, якщо він пізніше. Діють 365 днів</td><td>Після завершення кварталу, на депозит Unit Гаманця. Використовуються лише як знижка на платформі</td><td class="us">У виписці наступного місяця</td></tr>        </tbody>
-      </table>
+    <div class="cmp-scroll">
+    <div class="cmp" role="table" aria-label="Порівняння з конкурентами">
+      <div class="cmp-head" role="row">
+        <div class="col" role="columnheader"><span class="name">RateHawk</span><span class="sub">B2B-платформа</span></div>
+        <div class="col" role="columnheader"><span class="name">Unit.Travel</span><span class="sub">B2B-платформа</span></div>
+        <div class="col us" role="columnheader"><span class="name">Travel Point</span><span class="sub">Чорновик програми</span></div>
+      </div>
+
+      <div class="cmp-sec">
+        <h3>Коротко</h3>
+        <div class="cmp-quick">
+          <div class="q"><span class="eb">Бали</span><span class="big">Без %</span><span class="cap">фіксована кількість за бронювання</span></div>
+          <div class="q"><span class="eb">Кешбек</span><span class="big">0,2–1,3%</span><span class="cap">від нетто оплачених бронювань</span></div>
+          <div class="q us"><span class="eb">Бали</span><span class="big tip" tabindex="0" data-tip="Долучайтесь до обговорення" aria-label="Ставку ще визначаємо. Долучайтесь до обговорення">?</span><span class="cap">ставку ще визначаємо</span></div>
+
+          <div class="q"><span class="big dash">—</span><span class="cap">рівнів немає</span></div>
+          <div class="q"><span class="big">5</span><span class="cap">рівнів за обсягом за квартал</span></div>
+          <div class="q us"><span class="big">4</span><span class="cap">рівні</span></div>
+
+          <div class="q"><span class="big">Кожному</span><span class="cap">персональний менеджер</span></div>
+          <div class="q"><span class="big">24/7</span><span class="cap">підтримка в месенджерах і телефоном</span></div>
+          <div class="q us"><span class="big">Platinum</span><span class="cap">персональний менеджер лише з цього рівня</span></div>
+        </div>
+      </div>
+
+      <div class="cmp-sec">
+        <h3>Бали та кешбек</h3>
+        <div class="cmp-row" role="row">
+          <div role="cell"><b class="k">Нарахування</b><p>Фіксована кількість балів за бронювання, без відсотка: залежить від ночей, харчування й категорії номера. Не на всіх тарифах.</p></div>
+          <div role="cell"><b class="k">Нарахування</b><p>0,2–1,3% від нетто кожного оплаченого бронювання. Не нараховується на групові бронювання, бронювання під запит і B2B-бронювання з купоном.</p></div>
+          <div role="cell"><b class="k">Нарахування</b><p>Ще визначаємо <span class="pill tbd tip" tabindex="0" data-tip="Долучайтесь до обговорення">?</span></p></div>
+        </div>
+        <div class="cmp-row" role="row">
+          <div role="cell"><b class="k">Рівні</b><p class="dash">—</p></div>
+          <div role="cell"><b class="k">Рівні</b><p>5 рівнів за обсягом продажів за квартал, пороги персональні для кожного агента.</p></div>
+          <div role="cell"><b class="k">Рівні</b><p>Standard, Silver, Gold, Platinum.</p></div>
+        </div>
+        <div class="cmp-row" role="row">
+          <div role="cell"><b class="k">Коли доступні</b><p>Через 2 дні після виїзду або після дедлайну оплати, якщо він пізніше. Діють 365 днів.</p></div>
+          <div role="cell"><b class="k">Коли доступні</b><p>Після завершення кварталу, на депозитний рахунок Unit Гаманця.</p></div>
+          <div role="cell"><b class="k">Коли доступні</b><p>У виписці наступного місяця.</p></div>
+        </div>
+        <div class="cmp-row" role="row">
+          <div role="cell"><b class="k">Як використати</b><p>Оплата до 100% вартості бронювання: для себе, знижки клієнту чи апгрейду номера. Лише на бронювання.</p></div>
+          <div role="cell"><b class="k">Як використати</b><p>Лише як знижка на бронювання на платформі. Виведенню не підлягає.</p></div>
+          <div role="cell"><b class="k">Як використати</b><p>Ще визначаємо <span class="pill tbd tip" tabindex="0" data-tip="Долучайтесь до обговорення">?</span></p></div>
+        </div>
+      </div>
+
+      <div class="cmp-sec">
+        <h3>Виплати комісії</h3>
+        <div class="cmp-row" role="row">
+          <div role="cell"><b class="k">Виведення на рахунок</b><p>Комісія за gross-бронювання — щомісяця на банківський рахунок юрособи (2–4 тижні) або на баланс для оплати бронювань.</p></div>
+          <div role="cell"><b class="k">Виведення на рахунок</b><p>Комісія з бронювань, оплачених туристом, — на власний рахунок від €200, лише в євро, або миттєво на депозитний рахунок.</p></div>
+          <div role="cell"><b class="k">Виведення на рахунок</b><p>Ще визначаємо <span class="pill tbd tip" tabindex="0" data-tip="Долучайтесь до обговорення">?</span></p></div>
+        </div>
+      </div>
+
+      <div class="cmp-sec">
+        <h3>Сервіс</h3>
+        <div class="cmp-row" role="row">
+          <div role="cell"><b class="k">Персональний менеджер</b><p>Кожному клієнту за замовчуванням, плюс менеджер онбордингу. Може зустрітися особисто.</p></div>
+          <div role="cell"><b class="k">Персональний менеджер</b><p>Підтримка 24/7 у месенджерах і телефоном.</p></div>
+          <div role="cell"><b class="k">Персональний менеджер</b><p>Лише на рівні Platinum.</p></div>
+        </div>
+        <div class="cmp-row" role="row">
+          <div role="cell"><b class="k">Перевірка бронювань</b><p>Кожне бронювання до заїзду.</p></div>
+          <div role="cell"><b class="k">Перевірка бронювань</b><p>Кожне бронювання до заїзду: команда підтримки звіряє деталі з постачальником або готелем.</p></div>
+          <div role="cell"><b class="k">Перевірка бронювань</b><p>Кожне бронювання до заїзду: команда підтримки звіряє деталі з постачальником або готелем.</p></div>
+        </div>
+      </div>
+    </div>
     </div>
     <div class="callout">
       <span class="dot"></span>
@@ -323,8 +401,8 @@ footer a{word-break:break-all}
 
     <div class="rules3">
       <div><h3>Зрозуміла ставка замість «якоїсь кількості балів»</h3><p class="muted">RateHawk не називає відсоток: кількість балів залежить від ночей, харчування й категорії номера, а на частину тарифів бали не нараховуються зовсім. Агенти самі кажуть, що не розуміють принципу розрахунку. Можливо, варто зробити інакше: фіксована ставка на кожен тариф, включно з люксом і трансферами, щоб агент одразу бачив, скільки отримає.</p></div>
-      <div><h3>Ставка відома одразу, а не в кінці кварталу</h3><p class="muted">Unit рахує кешбек від кожного оплаченого бронювання, але рівень визначає обсяг за квартал, а виплата приходить лише після його завершення. Пропонуємо фіксувати ставку в момент бронювання й відкривати бали через 48 годин після виїзду гостя.</p></div>
-      <div><h3>Нижче 1% не помічають</h3><p class="muted">Корпоративні картки в B2B дають 1–1,5% на все. Середні рівні нижче цього агент, імовірно, сприйме як дрібницю, тому пропонуємо починати Silver з 1%.</p></div>
+      <div><h3>Ставка відома одразу, а не в кінці кварталу</h3><p class="muted">Unit рахує кешбек від кожного оплаченого бронювання, але рівень визначає обсяг за квартал, а виплата приходить лише після його завершення. Пропоную фіксувати ставку в момент бронювання й відкривати бали через 48 годин після виїзду гостя.</p></div>
+      <div><h3>Нижче 1% не помічають</h3><p class="muted">Корпоративні картки в B2B дають 1–1,5% на все. Середні рівні нижче цього агент, імовірно, сприйме як дрібницю, тому пропоную починати Silver з 1%.</p></div>
     </div>
   </div>
 </section>
@@ -333,7 +411,7 @@ footer a{word-break:break-all}
   <div class="wrap">
     <div class="narrow center">
       <h2 class="h-sec">Чотири рівні.<br>Одна публічна таблиця.</h2>
-      <p class="lead">Пропонуємо визначати рівень автоматично за обсягом: підвищення — з 1 числа наступного місяця, пониження — не раніше ніж через квартал.</p>
+      <p class="lead">Пропоную визначати рівень автоматично за обсягом: підвищення — з 1 числа наступного місяця, пониження — не раніше ніж через квартал.</p>
     </div>
     <div class="tiers">
       <article class="tier">
@@ -399,18 +477,18 @@ footer a{word-break:break-all}
   <div class="wrap">
     <div class="narrow center">
       <h2 class="h-sec">Бали, які повертаються<br>в бронювання.</h2>
-      <p class="lead">Пропонуємо просту формулу: один бал — один євро. Агент міг би витрачати їх на готелі й трансфери: на власну поїздку або щоб зробити клієнту знижку чи апгрейд від свого імені.</p>
+      <p class="lead">Пропоную просту формулу: один бал — один євро. Агент міг би витрачати їх на готелі й трансфери: на власну поїздку або щоб зробити клієнту знижку чи апгрейд від свого імені.</p>
     </div>
     <div class="flow">
       <div class="step"><span class="num">1</span><h3>Бронювання</h3><p>У чекауті можна показувати «+X балів». Ставка фіксувалася б за поточним рівнем і вже не змінювалася.</p></div>
       <div class="step"><span class="num">2</span><h3>Очікуються</h3><p>Бали можна показувати в кабінеті окремим балансом, поки гість не виїхав.</p></div>
-      <div class="step"><span class="num">3</span><h3>Доступні</h3><p>Пропонуємо відкривати їх через 48 годин після виїзду гостя: так само швидко, як у RateHawk, і швидше, ніж виписка наступного місяця.</p></div>
+      <div class="step"><span class="num">3</span><h3>Доступні</h3><p>Пропоную відкривати їх через 48 годин після виїзду гостя: так само швидко, як у RateHawk, і швидше, ніж виписка наступного місяця.</p></div>
       <div class="step"><span class="num">4</span><h3>Витрачаються</h3><p>На готелі й трансфери, для себе чи клієнта, до 100% вартості бронювання.</p></div>
     </div>
     <div class="facts">
-      <div class="fact"><b>На кожен тариф</b><span>Пропонуємо нараховувати на готелі й трансфери, без винятків для люксу.</span></div>
+      <div class="fact"><b>На кожен тариф</b><span>Пропоную нараховувати на готелі й трансфери, без винятків для люксу.</span></div>
       <div class="fact"><b>Термін дії — 24 місяці</b><span>Можливо, оптимальний варіант: достатньо, щоб накопичити на поїздку, і бали не висять зобов’язанням назавжди.</span></div>
-      <div class="fact"><b>Скасування — без балів</b><span>Пропонуємо рахувати тільки проживання, що відбулось.</span></div>
+      <div class="fact"><b>Скасування — без балів</b><span>Пропоную рахувати тільки проживання, що відбулось.</span></div>
     </div>
   </div>
 </section>
@@ -423,7 +501,7 @@ footer a{word-break:break-all}
       <p class="lead">Ідея: раз на рік — кілька днів у готелі з нашого топ-портфеля за рахунок Travel Point. Це могло б стати тим, до чого «веде» вся драбина.</p>
     </div>
     <div class="rgrid">
-      <div class="rbox"><h3>Хто їде</h3><p>Пропонуємо запрошувати всіх агентів, які тримали Platinum щонайменше 6 місяців року, плюс одне місце для Gold-агента з найбільшим приростом обсягу, щоб Retreat тягнув угору і Gold.</p></div>
+      <div class="rbox"><h3>Хто їде</h3><p>Пропоную запрошувати всіх агентів, які тримали Platinum щонайменше 6 місяців року, плюс одне місце для Gold-агента з найбільшим приростом обсягу, щоб Retreat тягнув угору і Gold.</p></div>
       <div class="rbox"><h3>Що всередині</h3><p>Наприклад: 3–4 ночі, знайомство з GM і командою продажів готелю, інспекція номерів, закриті умови на наступний рік, час з командою Travel Point.</p></div>
       <div class="rbox"><div class="big">≈ 0,7%</div><p>Орієнтовна вартість поїздки (близько €4 000 на агента) відносно мінімального річного обсягу Platinum €600 000. Разом з балами цінність Platinum ≈ 2,7%. Частину витрат можна покрити, домовившись про співфінансування з готелем-господарем.</p></div>
     </div>
@@ -499,7 +577,7 @@ footer a{word-break:break-all}
       <div class="lesson">
         <div><h3>Корпоративні картки</h3><p class="who">Mercury, Rho</p></div>
         <p class="what">Mercury дає 1,5% кешбеку на всі витрати, Rho — від 1% до 2% залежно від умов оплати й тарифу. Кешбек близько 1–1,5% на все став нормою для B2B-карток.</p>
-        <p class="us">Пропонуємо не опускати середні рівні нижче 1%, інакше агент порівнюватиме нас зі своєю карткою й може не побачити різниці.</p>
+        <p class="us">Пропоную не опускати середні рівні нижче 1%, інакше агент порівнюватиме нас зі своєю карткою й може не побачити різниці.</p>
       </div>
       <div class="lesson">
         <div><h3>Люкс-готелі</h3><p class="who">Four Seasons Preferred Partner</p></div>
@@ -530,7 +608,7 @@ footer a{word-break:break-all}
       <li><span class="when">Зараз</span><div><h3>Затвердити ставки й рівні</h3><p>Таблиця рівнів, правила балів, формат Retreat.</p></div></li>
       <li><span class="when">Тиждень 1–2</span><div><h3>Порахувати базу й економіку</h3><p>GMV кожного агента за липень–вересень, маржа по сегментах, вартість верифікації й менеджерів.</p></div></li>
       <li><span class="when">Тиждень 3–4</span><div><h3>Мінімальний продукт</h3><p>Баланси «очікуються / доступні», «+X балів» у чекауті, оплата балами. Перший місяць нарахування можна робити вручну.</p></div></li>
-      <li><span class="when">Тиждень 4–5</span><div><h3>Запуск</h3><p>Спершу особиста розмова з кожним із топ-5, потім анонс усій базі. Retreat пропонуємо анонсувати разом з програмою.</p></div></li>
+      <li><span class="when">Тиждень 4–5</span><div><h3>Запуск</h3><p>Спершу особиста розмова з кожним із топ-5, потім анонс усій базі. Retreat пропоную анонсувати разом з програмою.</p></div></li>
       <li><span class="when">Тиждень 6–8</span><div><h3>Перший зріз</h3><p>Рух по драбині, повернення нових, частка витрачених балів, частка балів, витрачених на клієнтів.</p></div></li>
     </ol>
   </div>
