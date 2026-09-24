@@ -208,7 +208,17 @@ p{margin:0}
 
 /* Calculator */
 .calc{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:56px}
-.ag-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:56px}
+.ag-ctl{margin-top:56px;display:grid;grid-template-columns:1fr 1fr;gap:34px}
+.ag-ctl .field{margin:0}
+.ag-ctl .top{flex-direction:column;align-items:flex-start;gap:2px}
+.ag-ctl output{font-size:14px;font-weight:500;color:var(--muted)}
+.ag-ctl .scale{position:relative;height:16px;font-size:12px;color:var(--muted);margin-top:4px}
+.ag-ctl .scale span{position:absolute;top:0}
+.ag-ctl .scale span:first-child{left:0}
+.ag-ctl .scale span:nth-child(2){left:33.33%;transform:translateX(-50%)}
+.ag-ctl .scale span:last-child{right:0}
+@media (max-width:760px){.ag-ctl{grid-template-columns:1fr}}
+.ag-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:18px}
 .ag-stats>div{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px 22px;display:flex;flex-direction:column}
 .ag-stats .v{font-size:clamp(24px,3vw,34px);font-weight:700;letter-spacing:-.03em;line-height:1.1;font-variant-numeric:tabular-nums}
 .ag-stats .l{font-size:13px;font-weight:600;color:var(--muted);margin-top:6px}
@@ -565,6 +575,18 @@ footer a{word-break:break-all}
     </div>
     </div>
     <div id="tab-agents" role="tabpanel" hidden>
+      <div class="panel ag-ctl">
+        <div class="field">
+          <div class="top"><label for="agThr">Пороги рівнів</label><output id="agThrOut"></output></div>
+          <input type="range" id="agThr" min="0" max="6" step="1" value="2">
+          <div class="scale"><span>нижче</span><span>поточні</span><span>вище</span></div>
+        </div>
+        <div class="field">
+          <div class="top"><label for="agRate">Ставки балів</label><output id="agRateOut"></output></div>
+          <input type="range" id="agRate" min="0" max="3" step="1" value="1">
+          <div class="scale"><span>−0,25 п.п.</span><span>поточні</span><span>+0,5 п.п.</span></div>
+        </div>
+      </div>
       <div class="ag-stats">
         <div><span class="v" id="agCount"></span><span class="l">агенцій з бронюваннями</span></div>
         <div><span class="v" id="agBk"></span><span class="l">бронювань за квартал</span></div>
@@ -578,7 +600,7 @@ footer a{word-break:break-all}
           <tbody id="agRows"></tbody>
         </table>
       </div>
-      <p class="small muted ag-note">Дані — внутрішній звіт за липень–вересень 2026. Рівень визначено за середнім місячним обсягом (обсяг за квартал ÷ 3); Silver також від 10 бронювань на місяць. Суми обороту приховано. Бали = обсяг за квартал × ставка рівня, 1 бал = €1. Прибуток — маркап 5% від нетто + €5 за бронювання.</p>
+      <p class="small muted ag-note">Дані — внутрішній звіт за липень–вересень 2026. Рівень визначено за середнім місячним обсягом (обсяг за квартал ÷ 3); Silver також від 10 бронювань на місяць, незалежно від порогів. Бали й частку прибутку округлено. Суми обороту приховано. Бали = обсяг за квартал × ставка рівня, 1 бал = €1. Прибуток — маркап 5% від нетто + €5 за бронювання.</p>
     </div>
   </div>
 </section>
@@ -684,32 +706,45 @@ footer a{word-break:break-all}
     });
   }); });
 
-  // Agents, Q3 2026: [name, bookings, tier]. Turnover is not published; tiers and totals are precomputed.
-  var AGENTS = [["Лали", 154, "Gold"], ["ТОВ \"Туристичний Клуб\"Багажник\"", 32, "Gold"], ["ФОП Заболотна Х.В.", 8, "Gold"], ["ТОВ \"ЕГОІСТ\"", 29, "Silver"], ["Wander World", 21, "Silver"], ["Travel-Consult", 9, "Silver"], ["Приватне Підприємство «Ласпі-Тур»", 16, "Silver"], ["ФОП Потоцька", 8, "Silver"], ["TJUICE TRAVEL HOUSE", 7, "Standard"], ["ФОП Федорова О. А.", 56, "Silver"], ["ФОП Чайка Ангеліна Анатоліївна", 2, "Standard"], ["Авіаквиток", 14, "Standard"], ["HELPER travel", 10, "Standard"], ["Coral Travel agency", 1, "Standard"], ["Эверест", 3, "Standard"], ["ТК Жара", 3, "Standard"], ["Илис", 5, "Standard"], ["Tom Sky Travel", 5, "Standard"], ["ФОП Чумакова Н.В.", 6, "Standard"], ["ИЭС", 3, "Standard"], ["Приватне підприємство \"Мандри Мрій\"", 3, "Standard"], ["Флай поинт ФОП Бойправ", 5, "Standard"], ["ТИВА ТРЕВЕЛ", 1, "Standard"], ["FOP OLEKSANDR SHVETS", 4, "Standard"], ["ТОВ «ТУРЕВІЙ»", 4, "Standard"], ["All Travel Group", 10, "Standard"], ["CENTER travel company", 2, "Standard"], ["ФОП Малахай Анжеліка Владиславівна (МТА Мер-Ка-Ба)", 2, "Standard"], ["ФОП Видолоб Дмитро Олексійович", 4, "Standard"], ["Тов \"Транско\"", 3, "Standard"], ["ТОВАРИСТВО З ОБМЕЖЕНОЮ ВІДПОВІДАЛЬНІСТЮ \"ПРАЙМ ТУРС\"", 4, "Standard"], ["ФОП Костащук Анастасія Олегівна", 1, "Standard"], ["ФОП ДЕМУРА", 2, "Standard"], ["ПрАТ \"КИЙ АВІА\"", 1, "Standard"], ["Air Story LLC", 1, "Standard"], ["Туристична агенція Bon Voyage", 1, "Standard"]];
-  var AG_SUM = {"count": 36, "bookings": 440, "points": 4493, "share": 21};
-  var CLS = {Standard:'c-std', Silver:'c-sil', Gold:'c-gld', Platinum:'c-plt'};
-  var counts = {Platinum:0, Gold:0, Silver:0, Standard:0};
-  var body = document.getElementById('agRows');
+  // Agents, Q3 2026. Turnover is not published: tiers per threshold scale and rounded totals are precomputed.
+  var AGENTS = [["Лали", 154], ["ТОВ \"Туристичний Клуб\"Багажник\"", 32], ["ФОП Заболотна Х.В.", 8], ["ТОВ \"ЕГОІСТ\"", 29], ["Wander World", 21], ["Travel-Consult", 9], ["Приватне Підприємство «Ласпі-Тур»", 16], ["ФОП Потоцька", 8], ["TJUICE TRAVEL HOUSE", 7], ["ФОП Федорова О. А.", 56], ["ФОП Чайка Ангеліна Анатоліївна", 2], ["Авіаквиток", 14], ["HELPER travel", 10], ["Coral Travel agency", 1], ["Эверест", 3], ["ТК Жара", 3], ["Илис", 5], ["Tom Sky Travel", 5], ["ФОП Чумакова Н.В.", 6], ["ИЭС", 3], ["Приватне підприємство \"Мандри Мрій\"", 3], ["Флай поинт ФОП Бойправ", 5], ["ТИВА ТРЕВЕЛ", 1], ["FOP OLEKSANDR SHVETS", 4], ["ТОВ «ТУРЕВІЙ»", 4], ["All Travel Group", 10], ["CENTER travel company", 2], ["ФОП Малахай Анжеліка Владиславівна (МТА Мер-Ка-Ба)", 2], ["ФОП Видолоб Дмитро Олексійович", 4], ["Тов \"Транско\"", 3], ["ТОВАРИСТВО З ОБМЕЖЕНОЮ ВІДПОВІДАЛЬНІСТЮ \"ПРАЙМ ТУРС\"", 4], ["ФОП Костащук Анастасія Олегівна", 1], ["ФОП ДЕМУРА", 2], ["ПрАТ \"КИЙ АВІА\"", 1], ["Air Story LLC", 1], ["Туристична агенція Bon Voyage", 1]];
+  var AG = {count:36, bookings:440,
+    scales:[0.5, 0.75, 1, 1.25, 1.5, 1.75, 2], shifts:[-0.25, 0, 0.25, 0.5],
+    tiers:["322222221110000000000000000000000000", "322221111100000000000000000000000000", "222111110100000000000000000000000000", "211111100100000000000000000000000000", "211110000100000000000000000000000000", "211110000100000000000000000000000000", "211000000100000000000000000000000000"],
+    res:[[[4800, 22], [5800, 27], [6800, 32], [7800, 37]], [[4400, 21], [5500, 26], [6500, 30], [7500, 35]], [[3500, 16], [4500, 21], [5500, 26], [6500, 30]], [[3100, 14], [4100, 19], [5100, 24], [6100, 29]], [[2900, 14], [3900, 18], [4900, 23], [5900, 28]], [[2900, 14], [3900, 18], [4900, 23], [5900, 28]], [[2600, 12], [3600, 17], [4600, 22], [5700, 26]]]};
+  var NAMES = ['Standard','Silver','Gold','Platinum'], BASE_RATE = [0.5,1,1.5,2], BASE_THR = [5000,10000,50000];
+  var CLS = ['c-std','c-sil','c-gld','c-plt'];
+  var body = document.getElementById('agRows'), lvCells = [];
   AGENTS.forEach(function(a){
-    counts[a[2]]++;
     var tr = document.createElement('tr');
     [a[0], '*****', '*****', a[1]].forEach(function(v, i){
       var td = document.createElement('td'); td.textContent = v;
       if (i) td.className = 'n' + (i < 3 ? ' mask' : '');
       tr.appendChild(td);
     });
-    var lv = document.createElement('td');
-    lv.innerHTML = '<span class="lvl"><span class="sw ' + CLS[a[2]] + '"></span>' + a[2] + '</span>';
-    tr.appendChild(lv);
+    var lv = document.createElement('td'); tr.appendChild(lv); lvCells.push(lv);
     body.appendChild(tr);
   });
-  set('agCount', AG_SUM.count);
-  set('agBk', num(AG_SUM.bookings));
-  set('agPts', num(AG_SUM.points));
-  set('agShare', AG_SUM.share + '%');
-  document.getElementById('agTiers').innerHTML = ['Platinum','Gold','Silver','Standard'].map(function(n){
-    return '<span class="tchip"><span class="sw ' + CLS[n] + '"></span>' + n + ' <b>' + counts[n] + '</b></span>';
-  }).join('');
+  set('agCount', AG.count);
+  set('agBk', num(AG.bookings));
+  var thr = document.getElementById('agThr'), rate = document.getElementById('agRate');
+  function renderAgents(){
+    var si = +thr.value, ri = +rate.value, k = AG.scales[si], d = AG.shifts[ri];
+    var t = AG.tiers[si], counts = [0,0,0,0];
+    lvCells.forEach(function(td, i){
+      var ti = +t[i]; counts[ti]++;
+      td.innerHTML = '<span class="lvl"><span class="sw ' + CLS[ti] + '"></span>' + NAMES[ti] + '</span>';
+    });
+    set('agThrOut', BASE_THR.map(function(v, i){ return NAMES[i+1] + ' ' + money(v*k); }).join(' · '));
+    set('agRateOut', BASE_RATE.map(function(v, i){ return NAMES[i] + ' ' + fmtPct(v + d); }).join(' · '));
+    set('agPts', '≈' + num(AG.res[si][ri][0]));
+    set('agShare', AG.res[si][ri][1] + '%');
+    document.getElementById('agTiers').innerHTML = [3,2,1,0].map(function(i){
+      return '<span class="tchip"><span class="sw ' + CLS[i] + '"></span>' + NAMES[i] + ' <b>' + counts[i] + '</b></span>';
+    }).join('');
+  }
+  [thr, rate].forEach(function(el){ el.addEventListener('input', renderAgents); });
+  renderAgents();
 })();
 </script>
 </body>
