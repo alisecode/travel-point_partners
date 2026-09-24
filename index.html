@@ -10,7 +10,7 @@
 <style>
 :root{
   --bg:#ffffff; --bg-alt:#f5f5f7; --text:#1d1d1f; --muted:#6e6e73; --line:#d2d2d7;
-  --accent:#0071e3; --accent-soft:rgba(0,113,227,.1); --good:#1d8a3a; --warn:#b25000;
+  --accent:#6a4ce2; --accent-soft:rgba(106,76,226,.1); --good:#1d8a3a; --warn:#b25000;
   --nav:rgba(255,255,255,.78); --card:#ffffff;
   --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Inter","Helvetica Neue",Arial,sans-serif;
   box-sizing:border-box;
@@ -20,13 +20,13 @@
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
     --bg:#000000; --bg-alt:#161617; --text:#f5f5f7; --muted:#a1a1a6; --line:#3a3a3c;
-    --accent:#2997ff; --accent-soft:rgba(41,151,255,.14); --good:#30d158; --warn:#ff9f0a;
+    --accent:#9d86f5; --accent-soft:rgba(157,134,245,.16); --good:#30d158; --warn:#ff9f0a;
     --nav:rgba(22,22,23,.78); --card:#1d1d1f;
   }
 }
 :root[data-theme="dark"]{
   --bg:#000000; --bg-alt:#161617; --text:#f5f5f7; --muted:#a1a1a6; --line:#3a3a3c;
-  --accent:#2997ff; --accent-soft:rgba(41,151,255,.14); --good:#30d158; --warn:#ff9f0a;
+  --accent:#9d86f5; --accent-soft:rgba(157,134,245,.16); --good:#30d158; --warn:#ff9f0a;
   --nav:rgba(22,22,23,.78); --card:#1d1d1f;
 }
 *,*::before,*::after{box-sizing:inherit}
@@ -63,6 +63,7 @@ h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.025em}
 .kicker{font-size:clamp(19px,2vw,21px);font-weight:600;color:var(--warn);margin:0 0 10px}
 p{margin:0}
 .muted{color:var(--muted)}
+.hl{color:var(--text);font-weight:500}
 .small{font-size:13px;line-height:1.45}
 
 /* Hero cards */
@@ -109,9 +110,9 @@ p{margin:0}
 .cmp-sec>h3{font-size:clamp(24px,3vw,32px);font-weight:600;letter-spacing:-.015em;padding-bottom:18px;border-bottom:1px solid var(--line)}
 .cmp-quick{row-gap:48px;padding-top:44px;text-align:center}
 .q{display:flex;flex-direction:column;align-items:center}
-.q .eb{font-size:14px;font-weight:600}
-.q .big{font-size:clamp(30px,4vw,48px);font-weight:700;letter-spacing:-.03em;line-height:1.1}
-.q .cap{font-size:14px;font-weight:600;margin-top:4px;max-width:220px}
+.q .eb{font-size:13px;font-weight:600}
+.q .big{font-size:clamp(24px,3vw,34px);font-weight:700;letter-spacing:-.03em;line-height:1.1}
+.q .cap{font-size:13px;font-weight:600;margin-top:4px;max-width:220px}
 .q.us .big{color:var(--accent)}
 .dash{color:var(--muted)}
 .cmp-row{padding-top:28px}
@@ -158,18 +159,29 @@ p{margin:0}
 @media (max-width:760px){.rules3{grid-template-columns:1fr}}
 
 /* Tiers */
-.tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:60px}
-@media (max-width:960px){.tiers{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:560px){.tiers{grid-template-columns:1fr}}
-.tier{background:var(--card);border-radius:22px;overflow:hidden;border:1px solid var(--line);display:flex;flex-direction:column}
-.tier .face{margin:14px;border-radius:14px;aspect-ratio:1.586;padding:16px 18px;display:flex;flex-direction:column;justify-content:space-between}
-.tier .face .n{font-size:22px;font-weight:700}
-.tier .face .t{font-size:12px;font-weight:600;opacity:.75}
-.tier .body{padding:6px 22px 26px}
-.rate{font-size:44px;font-weight:700;letter-spacing:-.03em;line-height:1}
-.rate small{font-size:15px;font-weight:600;color:var(--muted);letter-spacing:0;margin-left:4px}
-.thr{font-size:14px;color:var(--muted);margin-top:8px}
-.tier ul{list-style:none;padding:0;margin:18px 0 0;font-size:14.5px;line-height:1.4}
+.tiers{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:60px}
+@media (max-width:760px){.tiers{grid-template-columns:1fr}}
+.tier{background:var(--card);border-radius:28px;border:1px solid var(--line);padding:30px;
+  display:grid;grid-template-columns:190px 1fr;column-gap:26px;align-items:center}
+.tier .body{display:contents}
+.tier .face{grid-row:1 / span 2;border-radius:14px;aspect-ratio:1.586;padding:14px 16px;display:flex;flex-direction:column;justify-content:space-between;
+  box-shadow:0 18px 36px -18px rgba(0,0,0,.35)}
+.tier .face .n{font-size:20px;font-weight:700}
+.tier .face .t{font-size:11px;font-weight:600;opacity:.75}
+.rate{align-self:end;font-size:48px;font-weight:700;letter-spacing:-.03em;line-height:1;display:flex;align-items:baseline;gap:6px}
+.rate small{font-size:15px;font-weight:600;color:var(--muted);letter-spacing:0}
+.info{align-self:center;display:inline-flex;color:var(--muted);margin-left:2px}
+.info:hover,.info:focus{color:var(--accent)}
+.info svg{width:16px;height:16px}
+.thr{align-self:start;font-size:14px;color:var(--muted);margin-top:8px}
+.tier ul{grid-column:1 / -1;list-style:none;padding:0;margin:26px 0 0;font-size:15px;line-height:1.4;
+  display:grid;grid-template-columns:1fr 1fr;column-gap:26px}
+.tier ul li:first-child{grid-column:1 / -1}
+@media (max-width:520px){
+  .tier{grid-template-columns:130px 1fr;padding:22px;column-gap:18px}
+  .rate{font-size:36px}
+  .tier ul{grid-template-columns:1fr}
+}
 .tier li{padding:9px 0;border-top:1px solid var(--line)}
 .tier li.new{font-weight:600}
 .tier li .plus{color:var(--muted);font-weight:400}
@@ -400,9 +412,9 @@ footer a{word-break:break-all}
     </div>
 
     <div class="rules3">
-      <div><h3>Зрозуміла ставка замість «якоїсь кількості балів»</h3><p class="muted">RateHawk не називає відсоток: кількість балів залежить від ночей, харчування й категорії номера, а на частину тарифів бали не нараховуються зовсім. Агенти самі кажуть, що не розуміють принципу розрахунку. Можливо, варто зробити інакше: фіксована ставка на кожен тариф, включно з люксом і трансферами, щоб агент одразу бачив, скільки отримає.</p></div>
-      <div><h3>Ставка відома одразу, а не в кінці кварталу</h3><p class="muted">Unit рахує кешбек від кожного оплаченого бронювання, але рівень визначає обсяг за квартал, а виплата приходить лише після його завершення. Пропоную фіксувати ставку в момент бронювання й відкривати бали через 48 годин після виїзду гостя.</p></div>
-      <div><h3>Нижче 1% не помічають</h3><p class="muted">Корпоративні картки в B2B дають 1–1,5% на все. Середні рівні нижче цього агент, імовірно, сприйме як дрібницю, тому пропоную починати Silver з 1%.</p></div>
+      <div><h3>Зрозуміла ставка замість «якоїсь кількості балів»</h3><p class="muted">RateHawk не називає відсоток: кількість балів залежить від ночей, харчування й категорії номера, а на частину тарифів бали не нараховуються зовсім. Агенти самі кажуть, що не розуміють принципу розрахунку. <span class="hl">Можливо, варто зробити інакше: фіксована ставка на кожен тариф, включно з люксом і трансферами, щоб агент одразу бачив, скільки отримає.</span></p></div>
+      <div><h3>Ставка відома одразу, а не в кінці кварталу</h3><p class="muted">Unit рахує кешбек від кожного оплаченого бронювання, але рівень визначає обсяг за квартал, а виплата приходить лише після його завершення. <span class="hl">Пропоную фіксувати ставку в момент бронювання й відкривати бали через 48 годин після виїзду гостя.</span></p></div>
+      <div><h3>Нижче 1% не помічають</h3><p class="muted">Корпоративні картки в B2B дають 1–1,5% на все. Середні рівні нижче цього агент, імовірно, сприйме як дрібницю, тому <span class="hl">пропоную починати Silver з 1%.</span></p></div>
     </div>
   </div>
 </section>
@@ -417,7 +429,7 @@ footer a{word-break:break-all}
       <article class="tier">
         <div class="face c-std"><span class="t">Travel Point</span><span class="n">Standard</span></div>
         <div class="body">
-          <div class="rate">0,5%<small>балами</small></div>
+          <div class="rate">0,5%<small>балами</small><span class="info tip" tabindex="0" data-tip="Відсотки та суми орієнтовні" aria-label="Відсотки та суми орієнтовні"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="7.25" y="7" width="1.5" height="4.5" rx=".75" fill="currentColor"/><circle cx="8" cy="4.9" r=".95" fill="currentColor"/></svg></span></div>
           <p class="thr">Будь-який обсяг</p>
           <ul>
             <li class="new">Персональний менеджер</li>
@@ -431,8 +443,8 @@ footer a{word-break:break-all}
       <article class="tier">
         <div class="face c-sil"><span class="t">Travel Point</span><span class="n">Silver</span></div>
         <div class="body">
-          <div class="rate">1%<small>балами</small></div>
-          <p class="thr">Від €3 000 або 10 бронювань на місяць</p>
+          <div class="rate">1%<small>балами</small><span class="info tip" tabindex="0" data-tip="Відсотки та суми орієнтовні" aria-label="Відсотки та суми орієнтовні"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="7.25" y="7" width="1.5" height="4.5" rx=".75" fill="currentColor"/><circle cx="8" cy="4.9" r=".95" fill="currentColor"/></svg></span></div>
+          <p class="thr">Від €5 000 або 10 бронювань на місяць</p>
           <ul>
             <li><span class="plus">Все зі Standard, а також</span></li>
             <li class="new">Пріоритетна черга</li>
@@ -442,7 +454,7 @@ footer a{word-break:break-all}
       <article class="tier">
         <div class="face c-gld"><span class="t">Travel Point</span><span class="n">Gold</span></div>
         <div class="body">
-          <div class="rate">1,5%<small>балами</small></div>
+          <div class="rate">1,5%<small>балами</small><span class="info tip" tabindex="0" data-tip="Відсотки та суми орієнтовні" aria-label="Відсотки та суми орієнтовні"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="7.25" y="7" width="1.5" height="4.5" rx=".75" fill="currentColor"/><circle cx="8" cy="4.9" r=".95" fill="currentColor"/></svg></span></div>
           <p class="thr">Від €10 000 на місяць</p>
           <ul>
             <li><span class="plus">Все із Silver, а також</span></li>
@@ -456,7 +468,7 @@ footer a{word-break:break-all}
       <article class="tier">
         <div class="face c-plt"><span class="t">Travel Point</span><span class="n">Platinum</span></div>
         <div class="body">
-          <div class="rate">2%<small>балами</small></div>
+          <div class="rate">2%<small>балами</small><span class="info tip" tabindex="0" data-tip="Відсотки та суми орієнтовні" aria-label="Відсотки та суми орієнтовні"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="7.25" y="7" width="1.5" height="4.5" rx=".75" fill="currentColor"/><circle cx="8" cy="4.9" r=".95" fill="currentColor"/></svg></span></div>
           <p class="thr">Від €50 000 на місяць або за запрошенням</p>
           <ul>
             <li><span class="plus">Все з Gold, а також</span></li>
@@ -551,7 +563,7 @@ footer a{word-break:break-all}
     <div class="how small muted">
       <h3>Як працює розрахунок</h3>
       <div class="how-grid">
-        <p><b>Рівень і бали.</b> Рівень визначається за місячним обсягом агента: Silver від €3 000, Gold від €10 000, Platinum від €50 000. Бали нараховуються від суми продажу за ставкою рівня: бали на рік = обсяг × ставка × 12.</p>
+        <p><b>Рівень і бали.</b> Рівень визначається за місячним обсягом агента: Silver від €5 000, Gold від €10 000, Platinum від €50 000. Бали нараховуються від суми продажу за ставкою рівня: бали на рік = обсяг × ставка × 12.</p>
         <p><b>Чому маркап не рівно 5%.</b> Ми додаємо до нетто-ціни постачальника 5% і ще €5 за кожне бронювання. Відносно ціни продажу це трохи більше за 5%: на чеку <span id="xAvg"></span> нетто становить <span id="xNet"></span>, маркап — <span id="xMk"></span>, тобто <span id="xPct"></span> від продажу. Що менший чек, то більшу частку дають фіксовані €5.</p>
         <p><b>Прибуток до програми.</b> Маркап з одного бронювання × кількість бронювань на місяць (обсяг ÷ середній чек) × 12 місяців.</p>
         <p><b>Реальна вартість програми.</b> Коли агент платить балами, ми не отримуємо оплату, але постачальнику сплачуємо лише нетто. Тому бал номіналом €1 коштує нам близько €1 × (1 − маркап від продажу). Частину балів агенти не встигають витратити до кінця терміну дії, тож вона не стає витратами. Для Platinum додається Retreat, ≈ €4 000 на агента.</p>
@@ -670,7 +682,7 @@ footer a{word-break:break-all}
   function tierFor(g){
     if (g >= 50000) return {n:'Platinum', r:2};
     if (g >= 10000) return {n:'Gold', r:1.5};
-    if (g >= 3000) return {n:'Silver', r:1};
+    if (g >= 5000) return {n:'Silver', r:1};
     return {n:'Standard', r:0.5};
   }
   function calc(){
