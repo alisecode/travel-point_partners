@@ -159,26 +159,21 @@ p{margin:0}
 @media (max-width:760px){.rules3{grid-template-columns:1fr}}
 
 /* Tiers */
-.tiers{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:60px}
-@media (max-width:760px){.tiers{grid-template-columns:1fr}}
-.tier{background:var(--card);border-radius:28px;border:1px solid var(--line);padding:30px;
-  display:grid;grid-template-columns:190px 1fr;column-gap:26px;align-items:center;align-content:start}
-.tier .body{display:contents}
-.tier .face{grid-row:1 / span 2;border-radius:14px;aspect-ratio:1.586;padding:14px 16px;display:flex;flex-direction:column;justify-content:space-between;
-  box-shadow:0 18px 36px -18px rgba(0,0,0,.35)}
-.tier .face .n{font-size:20px;font-weight:700}
-.tier .face .t{font-size:11px;font-weight:600;opacity:.75}
-.rate{align-self:end;font-size:48px;font-weight:700;letter-spacing:-.03em;line-height:1;display:flex;align-items:baseline;gap:6px}
-.rate small{font-size:15px;font-weight:600;color:var(--muted);letter-spacing:0}
-.info{align-self:center;display:inline-flex;color:var(--muted);margin-left:2px}
+.tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:60px}
+@media (max-width:960px){.tiers{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.tiers{grid-template-columns:1fr}}
+.tier{background:var(--card);border-radius:22px;overflow:hidden;border:1px solid var(--line);display:flex;flex-direction:column}
+.tier .face{margin:14px;border-radius:14px;aspect-ratio:1.586;padding:16px 18px;display:flex;flex-direction:column;justify-content:space-between}
+.tier .face .n{font-size:22px;font-weight:700}
+.tier .face .t{font-size:12px;font-weight:600;opacity:.75}
+.tier .body{padding:6px 22px 26px}
+.rate{font-size:44px;font-weight:700;letter-spacing:-.03em;line-height:1}
+.rate small{font-size:15px;font-weight:600;color:var(--muted);letter-spacing:0;margin-left:4px}
+.info{display:inline-flex;vertical-align:middle;color:var(--muted);margin-left:6px}
 .info:hover,.info:focus{color:var(--accent)}
-.info svg{width:16px;height:16px}
-.thr{align-self:start;font-size:14px;color:var(--muted);margin-top:8px}
-.tier ul{grid-column:1 / -1;list-style:none;padding:0;margin:26px 0 0;font-size:15px;line-height:1.4}
-@media (max-width:520px){
-  .tier{grid-template-columns:130px 1fr;padding:22px;column-gap:18px}
-  .rate{font-size:36px}
-}
+.info svg{width:15px;height:15px}
+.thr{font-size:14px;color:var(--muted);margin-top:8px}
+.tier ul{list-style:none;padding:0;margin:18px 0 0;font-size:14.5px;line-height:1.4}
 .tier li{padding:9px 0;border-top:1px solid var(--line)}
 .tier li.new{font-weight:600}
 .tier li .plus{color:var(--muted);font-weight:400}
@@ -315,7 +310,7 @@ footer a{word-break:break-all}
 
           <div class="q"><span class="big">Кожному</span><span class="cap">персональний менеджер</span></div>
           <div class="q"><span class="big">24/7</span><span class="cap">підтримка в месенджерах і телефоном</span></div>
-          <div class="q us"><span class="big">Platinum</span><span class="cap">персональний менеджер лише з цього рівня</span></div>
+          <div class="q us"><span class="big tip" tabindex="0" data-tip="Долучайтесь до обговорення" aria-label="Ще визначаємо. Долучайтесь до обговорення">?</span><span class="cap">персональний менеджер — ще визначаємо</span></div>
         </div>
       </div>
 
@@ -334,7 +329,7 @@ footer a{word-break:break-all}
         <div class="cmp-row" role="row">
           <div role="cell"><b class="k">Коли доступні</b><p>Через 2 дні після виїзду або після дедлайну оплати, якщо він пізніше. Діють 365 днів.</p></div>
           <div role="cell"><b class="k">Коли доступні</b><p>Після завершення кварталу, на депозитний рахунок Unit Гаманця.</p></div>
-          <div role="cell"><b class="k">Коли доступні</b><p>Ще визначаємо <span class="pill tbd tip" tabindex="0" data-tip="Долучайтесь до обговорення">?</span></p></div>
+          <div role="cell"><b class="k">Коли доступні</b><p>Пропоную вивільняти через 24 години після виїзду.</p></div>
         </div>
         <div class="cmp-row" role="row">
           <div role="cell"><b class="k">Як використати</b><p>Оплата до 100% вартості бронювання: для себе, знижки клієнту чи апгрейду номера. Лише на бронювання.</p></div>
@@ -357,7 +352,7 @@ footer a{word-break:break-all}
         <div class="cmp-row" role="row">
           <div role="cell"><b class="k">Персональний менеджер</b><p>Кожному клієнту за замовчуванням, плюс менеджер онбордингу. Може зустрітися особисто.</p></div>
           <div role="cell"><b class="k">Персональний менеджер</b><p>Підтримка 24/7 у месенджерах і телефоном.</p></div>
-          <div role="cell"><b class="k">Персональний менеджер</b><p>Лише на рівні Platinum.</p></div>
+          <div role="cell"><b class="k">Персональний менеджер</b><p>Ще визначаємо <span class="pill tbd tip" tabindex="0" data-tip="Долучайтесь до обговорення">?</span></p></div>
         </div>
         <div class="cmp-row" role="row">
           <div role="cell"><b class="k">Перевірка бронювань</b><p>Кожне бронювання до заїзду.</p></div>
@@ -369,7 +364,7 @@ footer a{word-break:break-all}
     </div>
     <div class="callout">
       <span class="dot"></span>
-      <div><strong>Персональний менеджер — вже стандарт, а не привілей.</strong><p class="muted">RateHawk закріплює менеджера за кожним клієнтом з першого дня. <b>Тому пропоную закріпити менеджера за всіма агентами вже з рівня Standard, а для Platinum додати вищий рівень сервісу: senior-менеджер, гарантована відповідь на будь-який запит протягом 2 годин і чат у WhatsApp та Telegram 24/7.</b></p></div>
+      <div><strong>Персональний менеджер — вже стандарт, а не привілей.</strong><p class="muted">RateHawk закріплює менеджера за кожним клієнтом з першого дня. Тому пропоную для Platinum додати найвищий рівень сервісу: персональний senior-менеджер, гарантована відповідь на будь-який запит протягом 2 годин.</p></div>
     </div>
   </div>
 </section>
@@ -410,7 +405,7 @@ footer a{word-break:break-all}
 
     <div class="rules3">
       <div><h3>Зрозуміла ставка замість «якоїсь кількості балів»</h3><p class="muted">RateHawk не називає відсоток: кількість балів залежить від ночей, харчування й категорії номера, а на частину тарифів бали не нараховуються зовсім. Агенти самі кажуть, що не розуміють принципу розрахунку. <span class="hl">Можливо, варто зробити інакше: фіксована ставка на кожен тариф, включно з люксом і трансферами, щоб агент одразу бачив, скільки отримає.</span></p></div>
-      <div><h3>Ставка відома одразу, а не в кінці кварталу</h3><p class="muted">Unit рахує кешбек від кожного оплаченого бронювання, але рівень визначає обсяг за квартал, а виплата приходить лише після його завершення. <span class="hl">Пропоную фіксувати ставку в момент бронювання й відкривати бали через 48 годин після виїзду гостя.</span></p></div>
+      <div><h3>Ставка відома одразу, а не в кінці кварталу</h3><p class="muted">Unit рахує кешбек від кожного оплаченого бронювання, але рівень визначає обсяг за квартал, а виплата приходить лише після його завершення. <span class="hl">Пропоную фіксувати ставку в момент бронювання й відкривати бали через 24 години після виїзду гостя.</span></p></div>
       <div><h3>Нижче 1% не помічають</h3><p class="muted">Корпоративні картки в B2B дають 1–1,5% на все. Середні рівні нижче цього агент, імовірно, сприйме як дрібницю, тому <span class="hl">пропоную починати Silver з 1%.</span></p></div>
     </div>
   </div>
@@ -486,12 +481,12 @@ footer a{word-break:break-all}
   <div class="wrap">
     <div class="narrow center">
       <h2 class="h-sec">Бали, які повертаються<br>в бронювання.</h2>
-      <p class="lead">Пропоную просту формулу: один бал — один євро. Агент міг би витрачати їх на готелі й трансфери: на власну поїздку або щоб зробити клієнту знижку чи апгрейд від свого імені.</p>
+      <p class="lead">Один бал — один євро. Агент може витрачати бали на готелі та трансфери для себе або клієнтів.</p>
     </div>
     <div class="flow">
       <div class="step"><span class="num">1</span><h3>Бронювання</h3><p>У чекауті можна показувати «+X балів». Ставка фіксувалася б за поточним рівнем і вже не змінювалася.</p></div>
       <div class="step"><span class="num">2</span><h3>Очікуються</h3><p>Бали можна показувати в кабінеті окремим балансом, поки гість не виїхав.</p></div>
-      <div class="step"><span class="num">3</span><h3>Доступні</h3><p>Пропоную відкривати їх через 48 годин після виїзду гостя: так само швидко, як у RateHawk, і швидше, ніж виписка наступного місяця.</p></div>
+      <div class="step"><span class="num">3</span><h3>Доступні</h3><p>Пропоную відкривати їх через 24 години після виїзду гостя: швидше, ніж у RateHawk, і швидше, ніж виписка наступного місяця.</p></div>
       <div class="step"><span class="num">4</span><h3>Витрачаються</h3><p>На готелі й трансфери, для себе чи клієнта, до 100% вартості бронювання.</p></div>
     </div>
     <div class="facts">
@@ -521,51 +516,37 @@ footer a{word-break:break-all}
   <div class="wrap">
     <div class="narrow center">
       <h2 class="h-sec">Скільки це коштує нам.</h2>
-      <p class="lead">Наш маркап — 5% + €5 за бронювання. Бал вартістю €1 обходиться нам лише в нетто-вартість, а частина балів ніколи не витрачається. Перевірте, скільки прибутку лишається на кожному рівні.</p>
+      <p class="lead">Наш маркап — 5% від нетто + €5 за бронювання. Перевірте, скільки прибутку лишається після нарахування балів на кожному рівні.</p>
     </div>
     <div class="calc">
       <div class="panel">
         <div class="field">
           <div class="top"><label for="gmv">Обсяг агента на місяць</label><output id="gmvOut"></output></div>
-          <input type="range" id="gmv" min="1000" max="150000" step="1000" value="20000">
+          <input type="range" id="gmv" min="1000" max="100000" step="1000" value="20000">
         </div>
         <div class="field">
           <div class="top"><label for="avg">Середній чек бронювання</label><output id="avgOut"></output></div>
-          <input type="range" id="avg" min="200" max="10000" step="100" value="1500">
-        </div>
-        <div class="field">
-          <div class="top"><label for="breakage">Бали, що не витрачаються</label><output id="breakOut"></output></div>
-          <input type="range" id="breakage" min="0" max="40" step="1" value="15">
-        </div>
-        <div class="field">
-          <div class="top"><label>Бронювань на місяць</label><output id="cntOut"></output></div>
-          <div class="top"><label>Наш маркап</label><output id="mkOut"></output></div>
+          <input type="range" id="avg" min="200" max="5000" step="100" value="1500">
         </div>
       </div>
       <div class="panel res" aria-live="polite">
         <div class="tierName" id="rTier"></div>
         <div class="headline" id="rYear"></div>
-        <div class="sub">балів на рік для агента</div>
+        <div class="sub">на рік для агента · 1 бал = €1</div>
         <dl>
-          <dt>Ставка</dt><dd id="rRate"></dd>
           <dt>Балів на місяць</dt><dd id="rMonth"></dd>
-          <dt>Retreat на рік</dt><dd id="rTrip"></dd>
-          <dt>Наш прибуток на рік до програми</dt><dd id="rProfit"></dd>
-          <dt>Реальна вартість програми</dt><dd id="rCost"></dd>
-          <dt>Частка від прибутку</dt><dd id="rShare"></dd>
-          <dt>Чистий прибуток після програми</dt><dd id="rNet"></dd>
+          <dt>Наш прибуток на рік</dt><dd id="rProfit"></dd>
+          <dt>Прибуток після нарахування балів</dt><dd id="rNet"></dd>
+          <dt>Частка прибутку, що йде на бали</dt><dd id="rShare"></dd>
         </dl>
       </div>
     </div>
     <div class="how small muted">
       <h3>Як працює розрахунок</h3>
       <div class="how-grid">
-        <p><b>Рівень і бали.</b> Рівень визначається за місячним обсягом агента: Silver від €5 000, Gold від €10 000, Platinum від €50 000. Бали нараховуються від суми продажу за ставкою рівня: бали на рік = обсяг × ставка × 12.</p>
-        <p><b>Чому маркап не рівно 5%.</b> Ми додаємо до нетто-ціни постачальника 5% і ще €5 за кожне бронювання. Відносно ціни продажу це трохи більше за 5%: на чеку <span id="xAvg"></span> нетто становить <span id="xNet"></span>, маркап — <span id="xMk"></span>, тобто <span id="xPct"></span> від продажу. Що менший чек, то більшу частку дають фіксовані €5.</p>
-        <p><b>Прибуток до програми.</b> Маркап з одного бронювання × кількість бронювань на місяць (обсяг ÷ середній чек) × 12 місяців.</p>
-        <p><b>Реальна вартість програми.</b> Коли агент платить балами, ми не отримуємо оплату, але постачальнику сплачуємо лише нетто. Тому бал номіналом €1 коштує нам близько €1 × (1 − маркап від продажу). Частину балів агенти не встигають витратити до кінця терміну дії, тож вона не стає витратами. Для Platinum додається Retreat, ≈ €4 000 на агента.</p>
-        <p><b>Частка від прибутку.</b> Вартість програми ÷ прибуток до програми. Чистий прибуток — різниця між ними.</p>
-        <p><b>Що є припущенням.</b> Частка невитрачених балів і вартість Retreat — оцінки для обговорення. Калькулятор не враховує зростання обсягу агентів завдяки програмі, тобто показує консервативний сценарій.</p>
+        <p><b>Рівень і бали.</b> Рівень визначається за місячним обсягом агента: Silver від €5 000, Gold від €10 000, Platinum від €50 000. Бали = обсяг × ставка рівня, 1 бал = €1.</p>
+        <p><b>Наш прибуток.</b> До нетто-ціни ми додаємо 5% і €5 за бронювання, тож маркап трохи більший за 5% від продажу: на чеку <span id="xAvg"></span> це <span id="xMk"></span>, або <span id="xPct"></span>. Кількість бронювань = обсяг ÷ середній чек.</p>
+        <p><b>Після нарахування балів.</b> Прибуток мінус бали за номіналом. Розрахунок консервативний: не враховує бали, які не витратять, і зростання обсягу агентів завдяки програмі.</p>
       </div>
     </div>
   </div>
@@ -581,7 +562,7 @@ footer a{word-break:break-all}
       <div class="lesson">
         <div><h3>Авіа для бізнесу</h3><p class="who">Qatar Airways Beyond Business</p></div>
         <p class="what">Компанія накопичує Qrewards за всі поїздки співробітників. Три рівні за обсягом витрат (Elevate, Accelerate, Ascent): старші відкривають доступ до лаунжів і підвищення статусу. Співробітники паралельно заробляють особисті Avios у Privilege Club.</p>
-        <p class="us">Можна показувати рівні через те, що вони відкривають, а не лише через відсоток. Також варто розглянути особисті бали для співробітника, який бронює.</p>
+        <p class="us">Можна показувати рівні через те, що вони відкривають, а не лише через відсоток. Особисті бали для співробітника, який бронює, у нашій програмі вже закладені.</p>
       </div>
       <div class="lesson">
         <div><h3>Корпоративні картки</h3><p class="who">Mercury, Rho</p></div>
@@ -601,7 +582,7 @@ footer a{word-break:break-all}
       <div class="lesson">
         <div><h3>B2B-платформи в тревелі</h3><p class="who">Expedia TAAP Rewards</p></div>
         <p class="what">Один бал за кожен долар бронювання. Бали прив’язані до профілю конкретного агента, а не лише агенції, спершу «очікуються» і стають доступними після проживання, обмінюються на подарункові картки. У США програма зібрала понад 38 000 реєстрацій (станом на травень 2024).</p>
-        <p class="us">Особисті бали можуть мотивувати саме ту людину, яка натискає «забронювати». Варто розглянути їх поверх балів агенції.</p>
+        <p class="us">Підтверджує наш підхід: особисті бали отримує саме та людина, яка натискає «забронювати».</p>
       </div>
     </div>
   </div>
@@ -646,7 +627,6 @@ footer a{word-break:break-all}
 <script>
 (function(){
   var fmtPct = function(v){ return (Math.round(v*100)/100).toString().replace('.',',') + '%'; };
-  var eur = new Intl.NumberFormat('uk-UA',{style:'currency',currency:'EUR',maximumFractionDigits:0});
   var MAX = 2;
 
   // Hero fan: one orchestrated moment
@@ -673,46 +653,36 @@ footer a{word-break:break-all}
   mode('proposal');
 
   // Calculator: markup = 5% of net + €5 per booking
-  var gmv = document.getElementById('gmv'), avg = document.getElementById('avg'),
-      brk = document.getElementById('breakage');
-  var TRIP = 4000, MK_PCT = 0.05, MK_FIX = 5;
+  var gmv = document.getElementById('gmv'), avg = document.getElementById('avg');
+  var MK_PCT = 0.05, MK_FIX = 5;
+  var num = function(v){ return Math.round(v).toLocaleString('uk-UA'); };
+  var money = function(v){ return '€' + num(v); };
   function tierFor(g){
     if (g >= 50000) return {n:'Platinum', r:2};
     if (g >= 10000) return {n:'Gold', r:1.5};
     if (g >= 5000) return {n:'Silver', r:1};
     return {n:'Standard', r:0.5};
   }
+  function set(id, v){ document.getElementById(id).textContent = v; }
   function calc(){
-    var g = +gmv.value, a = +avg.value, b = +brk.value;
-    var t = tierFor(g);
-    var count = g / a;
-    var net = (a - MK_FIX) / (1 + MK_PCT);         // нетто одного бронювання
-    var profitPer = a - net;                        // 5% нетто + €5
-    var effMargin = profitPer / a;                  // ефективна маржа від продажу
-    var profitYear = profitPer * count * 12;
+    var g = +gmv.value, a = +avg.value, t = tierFor(g);
+    var net = (a - MK_FIX) / (1 + MK_PCT);
+    var profitPer = a - net;
+    var profitYear = profitPer * (g / a) * 12;
     var month = g * t.r / 100, year = month * 12;
-    var trip = t.n === 'Platinum' ? TRIP : 0;
-    var cost = year * (1 - effMargin) * (1 - b/100) + trip;
-    document.getElementById('gmvOut').textContent = eur.format(g);
-    document.getElementById('avgOut').textContent = eur.format(a);
-    document.getElementById('breakOut').textContent = b + '%';
-    document.getElementById('cntOut').textContent = (Math.round(count*10)/10).toString().replace('.',',');
-    document.getElementById('mkOut').textContent = fmtPct(effMargin*100) + ' від продажу';
-    document.getElementById('xAvg').textContent = eur.format(a);
-    document.getElementById('xNet').textContent = eur.format(net);
-    document.getElementById('xMk').textContent = eur.format(profitPer);
-    document.getElementById('xPct').textContent = fmtPct(effMargin*100);
-    document.getElementById('rTier').textContent = 'Рівень ' + t.n;
-    document.getElementById('rYear').textContent = eur.format(year);
-    document.getElementById('rRate').textContent = fmtPct(t.r);
-    document.getElementById('rMonth').textContent = eur.format(month);
-    document.getElementById('rTrip').textContent = trip ? eur.format(trip) : '—';
-    document.getElementById('rProfit').textContent = eur.format(profitYear);
-    document.getElementById('rCost').textContent = eur.format(cost) + ' (' + fmtPct(cost/(g*12)*100) + ' GMV)';
-    document.getElementById('rShare').textContent = fmtPct(cost/profitYear*100);
-    document.getElementById('rNet').textContent = eur.format(profitYear - cost);
+    set('gmvOut', money(g));
+    set('avgOut', money(a));
+    set('xAvg', money(a));
+    set('xMk', money(profitPer));
+    set('xPct', fmtPct(profitPer / a * 100));
+    set('rTier', 'Рівень ' + t.n + ' · ' + fmtPct(t.r));
+    set('rYear', num(year) + ' балів');
+    set('rMonth', num(month));
+    set('rProfit', money(profitYear));
+    set('rNet', money(profitYear - year));
+    set('rShare', Math.round(year / profitYear * 100) + '%');
   }
-  [gmv, avg, brk].forEach(function(el){ el.addEventListener('input', calc); el.addEventListener('change', calc); });
+  [gmv, avg].forEach(function(el){ el.addEventListener('input', calc); el.addEventListener('change', calc); });
   calc();
 })();
 </script>
